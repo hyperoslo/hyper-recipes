@@ -7,6 +7,9 @@ gem 'rails-api'
 
 # Use sqlite3 as the database for Active Record
 
+gem 'carrierwave'
+gem 'fog', '~> 1.3.1'
+
 group :production, :staging do
   gem "pg"
 end
