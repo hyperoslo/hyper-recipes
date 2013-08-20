@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  instructions: MyString
+  favorite: false
+  difficulty: 9.99
+
+two:
+  name: MyString
+  description: MyString
+  instructions: MyString
+  favorite: false
+  difficulty: 9.99
