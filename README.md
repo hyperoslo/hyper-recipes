@@ -8,7 +8,7 @@ Also we enjoy making some pop corn and reading your code like a fantasy book of 
 
 We have a nice backend that will take care of your delicious recipes. You can get the documentation of the backend here:
 
-http://gist.github.com/3434342
+https://gist.github.com/NSElvis/6398c86ca4d171a8e18a
 
 Your project should make use of AFNetworking and CoreData. Asynchronous operations are really important, don't lock the UI and the less loading indicators, the better (:
 
