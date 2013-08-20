@@ -5,7 +5,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :description
       t.string :instructions
       t.boolean :favorite
-      t.decimal :difficulty, null: false
+      t.integer :difficulty, null: false
 
       t.timestamps
     end
