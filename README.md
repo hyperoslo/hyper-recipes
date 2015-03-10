@@ -1,19 +1,78 @@
-Hi,
+HTTP Endpoints
+==============
 
-Thanks for coming here and sharing sometime with us, after the interview we usually have a fun small project called Hyper Recipes that I hope you will enjoy.
+Base URL: http://hyper-recipes.herokuapp.com
 
-The goal is to make an iOS app to add, edit, remove and see recipes, you decide how it looks, but we appreciate good looking apps and thoughtful user experiences.
+## Retrieve recipes
 
-Also we enjoy making some pop corn and reading your code like a fantasy book of dragons and unicorns.
+`GET`    /recipes
 
-We have a nice backend that will take care of your delicious recipes. You can get the documentation of the backend here:
+Sample:
 
-https://gist.github.com/NSElvis/6398c86ca4d171a8e18a
+```json
+[
+  {
+    "id": 437,
+    "name": "Strawberries and Cream Cake",
+    "description": "Makes an elegant presentation without too much fuss.",
+    "instructions": "eee",
+    "favorite": false,
+    "difficulty": "3.0",
+    "created_at": "2014-09-29T10:43:00.072Z",
+    "updated_at": "2014-11-26T11:53:58.451Z",
+    "photo": {
+      "url": "https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/437/Strawberries_and_Cream_Cake.jpg"
+    }
+  }
+]
+```
 
-Your project should make use of AFNetworking and CoreData. Asynchronous operations are really important, don't lock the UI and the less loading indicators, the better (:
+## Create recipes
 
-When you are done, please link us to your project in Github.
+`POST`   /recipes
 
-Thanks and I hope you enjoy making some recipes.
+* **name:string** (obligatory field)
+* **difficulty:integer** (obligatory field) [Valid values: 1, 2 and 3]
+* description:text
+* instructions:text
+* favorite:boolean
+* recipe[photo]:image == Multipart form request
 
-Best,
+Sample:
+
+```json
+{
+  "recipe": {
+    "name": "New name",
+    "difficulty": 1
+  }
+}
+```
+
+You will get the image_url in the response.
+
+## Update recipes
+
+`PUT` or `PATCH`    /recipes/:id
+
+* **name:string** (obligatory field)
+* **difficulty:integer** (obligatory field) [Valid values: 1, 2 and 3]
+* description:text
+* instructions:text
+* favorite:boolean
+* recipe[photo]:image == Multipart form request
+
+Sample:
+
+```json
+{
+  "recipe": {
+    "name": "New name",
+    "difficulty": 1
+  }
+}
+```
+
+## Delete recipes
+
+`DELETE` /recipes/:id
