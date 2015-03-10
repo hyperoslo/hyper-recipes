@@ -1,4 +1,8 @@
 class RecipesController < ApplicationController
+
+
+before_filter :set_default_response_format
+
   # GET /recipes
   # GET /recipes.json
   def index
@@ -46,5 +50,11 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     head :no_content
+  end
+
+
+private
+  def set_default_response_format
+    request.format = :json
   end
 end
