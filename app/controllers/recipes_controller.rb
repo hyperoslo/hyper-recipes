@@ -16,7 +16,7 @@ before_filter :set_default_response_format
   def show
     @recipe = Recipe.find(params[:id])
 
-    render json: @recipe
+    render
   end
 
   # POST /recipes
