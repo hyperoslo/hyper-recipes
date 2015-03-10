@@ -17,7 +17,7 @@ Sample:
     "description": "Makes an elegant presentation without too much fuss.",
     "instructions": "eee",
     "favorite": false,
-    "difficulty": "3.0",
+    "difficulty": 3,
     "created_at": "2014-09-29T10:43:00.072Z",
     "updated_at": "2014-11-26T11:53:58.451Z",
     "photo": {
