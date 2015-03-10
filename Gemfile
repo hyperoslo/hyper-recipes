@@ -8,7 +8,7 @@ gem 'rails', '4.0.0'
 gem 'rails-api'
 
 # Use sqlite3 as the database for Active Record
-
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog', '~> 1.3.1'
 
