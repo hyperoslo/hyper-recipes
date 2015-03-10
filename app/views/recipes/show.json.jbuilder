@@ -8,5 +8,5 @@ json.created_at @recipe.created_at
 json.updated_at @recipe.updated_at
 json.photo do
   json.url @recipe.photo_url
-  json.thumbnail @recipe.photo.thumbnail.url
+  json.thumbnail_url @recipe.photo.thumbnail.url
 end
