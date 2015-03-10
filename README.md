@@ -1,11 +1,11 @@
 HTTP Endpoints
 ==============
 
-Base URL: http://hyper-recipes.herokuapp.com
+Base URL: `http://hyper-recipes.herokuapp.com`
 
 ## Retrieve recipes
 
-`GET`    /recipes
+`GET`: `/recipes`
 
 Sample:
 
@@ -29,7 +29,7 @@ Sample:
 
 ## Create recipes
 
-`POST`   /recipes
+`POST`: `/recipes`
 
 * **name:string** (obligatory field)
 * **difficulty:integer** (obligatory field) [Valid values: 1, 2 and 3]
@@ -49,11 +49,9 @@ Sample:
 }
 ```
 
-You will get the image_url in the response.
-
 ## Update recipes
 
-`PUT` or `PATCH`    /recipes/:id
+`PUT` or `PATCH`: `/recipes/:id`
 
 * **name:string** (obligatory field)
 * **difficulty:integer** (obligatory field) [Valid values: 1, 2 and 3]
@@ -75,4 +73,4 @@ Sample:
 
 ## Delete recipes
 
-`DELETE` /recipes/:id
+`DELETE`: `/recipes/:id`
