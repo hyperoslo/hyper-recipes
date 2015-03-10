@@ -21,7 +21,7 @@ Sample:
     "created_at": "2014-09-29T10:43:00.072Z",
     "updated_at": "2014-11-26T11:53:58.451Z",
     "photo": {
-      "url": "https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/437/Strawberries_and_Cream_Cake.jpg"
+      "url": "https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/437/Strawberries_and_Cream_Cake.jpg",
       "thumbnail_url": "https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/437/thumbnail_Strawberries_and_Cream_Cake.jpg"
     }
   }
