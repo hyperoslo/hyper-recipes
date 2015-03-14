@@ -18,10 +18,15 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'pry-rails'
+  gem 'guard-rspec', require: false
+  gem 'rspec-rails', '~> 3.0'
+  gem 'capybara'
+  gem 'simplecov', require: false
 end
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
