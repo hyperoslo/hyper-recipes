@@ -20,16 +20,8 @@ private
 
   def generate_recipes
     if self.seed_recipes == true
-      recipes = YAML::load(File.open("#{Rails.root}/config/recipies.yml"))
-      recipes.each do |recipe|
-        self.recipes.create(
-          name: recipe["recipe"]["name"],
-          difficulty: recipe["recipe"]["difficulty"],
-          instructions: recipe["recipe"]["instructions"],
-          favorite: recipe["recipe"]["favorite"],
-          remote_photo_url: recipe["recipe"]["remote_photo_url"],
-          description: recipe["recipe"]["description"])
-      end
+      recipes = RecipesGenerator.new
+      recipes.generate_for(self)
     end
   end
 end
