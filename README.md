@@ -26,7 +26,7 @@ Sample:
 ```
 In Curl it would be something like that:
 ```
-curl -d "user[email]=user@example.com" -d "user[password]=password" -d "user[password_confirmation]=password" http://localhost:3000/users
+curl -d "user[email]=user@example.com" -d "user[password]=password" -d "user[password_confirmation]=password" http://hyper-recipes.herokuapp.com/users
 ```
 
 ### with dummy recipes
@@ -46,7 +46,7 @@ Sample:
 ```
 In Curl it would be something like that:
 ```
-curl -d "user[email]=user@example.com" -d "user[password]=password" -d "user[password_confirmation]=password" -d "user[seed_recipes]=true" http://localhost:3000/users
+curl -d "user[email]=user@example.com" -d "user[password]=password" -d "user[password_confirmation]=password" -d "user[seed_recipes]=true" http://hyper-recipes.herokuapp.com/users
 ```
 
 When you successfully create a user you'll get a token in the json response, use that in any further communications with the API, you need to set a request header with `Authorization` and use the generate auth_token.
@@ -58,7 +58,7 @@ _Only account owner can delete his/her account_
 
 In Curl it would be something like that:
 ```
-curl -H 'Authorization: Token token="e71d76657591f101f4df"' -X DELETE http://localhost:3000/users/5
+curl -H 'Authorization: Token token="e71d76657591f101f4df"' -X DELETE http://hyper-recipes.herokuapp.com/users/5
 ```
 so you should replace `"e71d76657591f101f4df"` with your token, and the `5` at the end of the url with your id
 
@@ -88,7 +88,7 @@ Sample:
 ```
 In Curl it would be something like that:
 ```
-curl -H 'Authorization: Token token="replace-with-token"' http://localhost:3000/recipes
+curl -H 'Authorization: Token token="replace-with-token"' http://hyper-recipes.herokuapp.com/recipes
 ```
 
 ## Create recipes
@@ -114,7 +114,7 @@ Sample:
 ```
 In Curl it would be something like that:
 ```
-curl -H 'Authorization: Token token="2e3e72bbbcfd13eb27f4"' -d "recipe[name]=Meatballs" -d "recipe[difficulty]=1" http://localhost:3000/recipes
+curl -H 'Authorization: Token token="2e3e72bbbcfd13eb27f4"' -d "recipe[name]=Meatballs" -d "recipe[difficulty]=1" http://hyper-recipes.herokuapp.com/recipes
 ```
 
 ## Update recipes
@@ -140,7 +140,7 @@ Sample:
 ```
 In Curl it would be something like that:
 ```
-curl -H 'Authorization: Token token="0b71145b7474d575632b"' -d "recipe[name]=Meatballzz" -d "recipe[difficulty]=2" -X PUT http://localhost:3000/recipes/22
+curl -H 'Authorization: Token token="0b71145b7474d575632b"' -d "recipe[name]=Meatballzz" -d "recipe[difficulty]=2" -X PUT http://hyper-recipes.herokuapp.com/recipes/22
 ```
 
 
@@ -149,5 +149,5 @@ curl -H 'Authorization: Token token="0b71145b7474d575632b"' -d "recipe[name]=Mea
 `DELETE`: `/recipes/:id`
 In Curl it would be something like that:
 ```
-curl -H 'Authorization: Token token="0b71145b7474d575632b"' -X DELETE http://localhost:3000/recipes/22
+curl -H 'Authorization: Token token="0b71145b7474d575632b"' -X DELETE http://hyper-recipes.herokuapp.com/recipes/22
 ```
