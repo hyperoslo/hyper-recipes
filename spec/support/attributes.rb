@@ -17,3 +17,50 @@ def recipe_attributes(overrides = {})
     user_id: 1
   }.merge(overrides)
 end
+
+def user_params_valid
+  {
+    user: {
+      email: 'user@example.com',
+      password: 'testpass',
+      password_confirmation: 'testpass'
+    }
+  }
+end
+
+def user_params_email
+  {
+    user: {
+      email: 'user@example.com'
+    }
+  }
+end
+
+def user_params_email_invalid
+  {
+    user: {
+      email: 'user@example',
+      password: 'testpass',
+      password_confirmation: 'testpass'
+    }
+  }
+end
+
+def user_params_password
+  {
+    user: {
+      password: 'testpass',
+      password_confirmation: 'testpass'
+    }
+  }
+end
+
+def recipe_params(overrides = {})
+  {
+    recipe: {
+      name: 'Fresh Peach Cobbler I',
+      difficulty: 1,
+      user_id: 1
+    }
+  }.merge(overrides)
+end

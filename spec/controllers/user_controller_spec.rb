@@ -3,50 +3,76 @@ require 'rails_helper'
 describe UsersController do
 
   describe "create" do
-    it "returns a new user's token from valid email and password" do
-      user_params = { user: { email: 'user@example.com', password: 'testpass', password_confirmation: 'testpass' } }
-      post :create, user_params
-      expect(response.status).to eq 201
-      expect(response.body).to include("#{User.last.auth_token}")
+    context 'when valid params' do
+      before { post :create, user_params_valid }
+
+      it 'is expected to respond with 201' do
+        expect(response.status).to eq 201
+      end
+
+      it 'returns a new user' do
+        expect(response.body).to include("#{User.last.auth_token}")
+      end
     end
 
-    it "returns an error when not given a password" do
-      user_params = { 'user' => { 'email' => 'user@example.com' } }
-      post :create, user_params
-      expect(response.status).to eq 400
-      expect(response.body).to include("can't be blank")
+    context 'when params missing password' do
+      before { post :create, user_params_email }
+
+      it 'is expected to respond with 400' do
+        expect(response.status).to eq 400
+      end
+
+      it 'return error message' do
+        expect(response.body).to include("can't be blank")
+      end
     end
 
-    it "returns an error when given an invalid email" do
-      user_params = { 'user' => { 'email' => 'testuser', 'password' => 'testpass', password_confirmation: 'testpass' } }
-      post :create, user_params
-      expect(response.status).to eq 400
-      expect(response.body).to include('is invalid')
+    context 'when params has invalid email' do
+      before { post :create, user_params_email_invalid }
+
+      it 'is expected to respond with 400' do
+        expect(response.status).to eq 400
+      end
+
+      it 'return error message' do
+        expect(response.body).to include('is invalid')
+      end
     end
 
-    it "returns an error when user email not unique" do
-      User.create!(user_attributes)
-      user_params = { 'user' => { 'email' => 'user@example.com', 'password' => 'testpass', password_confirmation: 'testpass' } }
-      post :create, user_params
-      expect(response.status).to eq 400
-      expect(response.body).to include('has already been taken')
+    context 'when params has an already used email' do
+      before do
+        User.create!(user_attributes)
+        post :create, user_params_valid
+      end
+
+      it 'is expected to respond with 400' do
+        expect(response.status).to eq 400
+      end
+
+      it 'return error message' do
+        expect(response.body).to include('has already been taken')
+      end
     end
 
-    it "returns an error when not given an email" do
-      user_params = { 'user' => { 'password' => 'testuser', password_confirmation: 'testpass' } }
-      post :create, user_params
-      expect(response.status).to eq 400
-      expect(response.body).to include("can't be blank")
+    context 'when params has no email' do
+      before { post :create, user_params_password }
+
+      it 'is expected to respond with 400' do
+        expect(response.status).to eq 400
+      end
+
+      it 'return error message' do
+        expect(response.body).to include("can't be blank")
+      end
     end
   end
 
   describe "delete" do
-    before do
-      @user = User.create!(user_attributes)
-      auth(@user)
-    end
+    let(:user) { User.create!(user_attributes) }
+    before { auth(user) }
+
     it "deletes own user's accont" do
-      delete :destroy, id: @user.id
+      delete :destroy, id: user.id
 
       expect(response.status).to eq 200
     end
