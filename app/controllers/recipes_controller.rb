@@ -1,28 +1,25 @@
 class RecipesController < ApplicationController
-
-
-before_filter :set_default_response_format
+  before_action :authenticate
 
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
-
-    render
+    @recipes = @current_user.recipes.load
+    render json: @recipes
   end
 
   # GET /recipes/1
   # GET /recipes/1.json
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = @current_user.recipes.find(params[:id])
 
-    render
+    render json: @recipe
   end
 
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(params[:recipe])
+    @recipe = @current_user.recipes.new(params[:recipe])
 
     if @recipe.save
       render json: @recipe, status: :created, location: @recipe
@@ -34,7 +31,7 @@ before_filter :set_default_response_format
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    @recipe = Recipe.find(params[:id])
+    @recipe = @current_user.recipes.find(params[:id])
 
     if @recipe.update(params[:recipe])
       head :no_content
@@ -46,15 +43,9 @@ before_filter :set_default_response_format
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @recipe = Recipe.find(params[:id])
+    @recipe = @current_user.recipes.find(params[:id])
     @recipe.destroy
 
     head :no_content
-  end
-
-
-private
-  def set_default_response_format
-    request.format = :json
   end
 end

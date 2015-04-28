@@ -17,3 +17,6 @@
 
 # Ignore uploaded files
 /public/uploads
+
+# Ignote simplecov coverage
+/coverage

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310140244) do
+ActiveRecord::Schema.define(version: 20150314144907) do
 
   create_table "recipes", force: true do |t|
     t.string   "name",         null: false
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 20150310140244) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
+    t.integer  "user_id"
   end
+
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "auth_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "seed_recipes",    default: false
+  end
+
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token"
 
 end

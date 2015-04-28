@@ -11,6 +11,6 @@ json.array! @recipes do |recipe|
     json.url recipe.photo_url
     json.thumbnail_url recipe.photo.thumbnail.url
   end
-  
+  json.user_id recipe.user_id
 end
 
