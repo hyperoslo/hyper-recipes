@@ -1,4 +1,5 @@
 class RecipesGenerator
+  include ActionView::Helpers::AssetUrlHelper
   attr_reader :name
 
   def initialize(recipes_file='recipes')
@@ -7,14 +8,18 @@ class RecipesGenerator
 
   def generate_for(obj)
     @recipes.each do |recipe|
-      obj.recipes.create(
+      new_recipe = obj.recipes.build(
         name: recipe["recipe"]["name"],
         difficulty: recipe["recipe"]["difficulty"],
         instructions: recipe["recipe"]["instructions"],
         favorite: recipe["recipe"]["favorite"],
-        remote_photo_url: recipe["recipe"]["remote_photo_url"],
         description: recipe["recipe"]["description"]
       )
+      photo_path = "#{Rails.root}/public/seed_images/#{recipe['recipe']['photo']}"
+      File.open photo_path do |f|
+        new_recipe.photo = f
+      end
+      new_recipe.save!
     end
   end
 end
