@@ -1,19 +1,17 @@
 class RecipesController < ApplicationController
+  include ActionController::ImplicitRender
   before_action :authenticate
 
   # GET /recipes
   # GET /recipes.json
   def index
     @recipes = @current_user.recipes.load
-    render json: @recipes
   end
 
   # GET /recipes/1
   # GET /recipes/1.json
   def show
     @recipe = @current_user.recipes.find(params[:id])
-
-    render json: @recipe
   end
 
   # POST /recipes
@@ -22,7 +20,7 @@ class RecipesController < ApplicationController
     @recipe = @current_user.recipes.new(params[:recipe])
 
     if @recipe.save
-      render json: @recipe, status: :created, location: @recipe
+      render @recipe, status: :created, location: @recipe
     else
       render json: @recipe.errors, status: :unprocessable_entity
     end
