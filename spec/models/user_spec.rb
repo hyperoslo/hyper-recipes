@@ -15,6 +15,7 @@ describe 'user' do
 
     it "generates dummy recipes when created with seed_recipes = true" do
       expect(user.recipes.size).to eq(15)
+      expect(user.recipes.first.photo.to_s).not_to eq('')
     end
   end
 end
