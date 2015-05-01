@@ -11,7 +11,7 @@ Base URL: `http://hyper-recipes.herokuapp.com`
 * seed_recipes:boolean
 
 ### without dummy recipes
-`POST`: `/user`
+`POST`: `/users`
 
 Sample:
 
@@ -30,7 +30,7 @@ curl -d "user[email]=user@example.com" -d "user[password]=password" -d "user[pas
 ```
 
 ### with dummy recipes
-`POST`: `/user`
+`POST`: `/users`
 
 Sample:
 
