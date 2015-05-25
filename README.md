@@ -1,35 +1,17 @@
-HTTP Endpoints
-==============
+# Introduction
 
-Base URL: `http://hyper-recipes.herokuapp.com`
+This is the backend for the Hyper Recipes app, to be able to use it you first have to register and use the provided token, this is helpful so other applicants don't modify your recipes in any way.
 
-## Create user
+The base HTTP endpoints is: `http://hyper-recipes.herokuapp.com`
+
+## Register to get a token
 
 * **email:string** (obligatory field, must be valid email format)
 * **password** (obligatory field)
 * **password_confirmation** (obligatory field)
 * seed_recipes:boolean
 
-### without dummy recipes
-`POST`: `/users`
-
-Sample:
-
-```json
-{
-  "user": {
-    "email": "user@example.com",
-    "password": "secret",
-    "password_confirmation": "secret"
-  }
-}
-```
-In Curl it would be something like that:
-```
-curl -d "user[email]=user@example.com" -d "user[password]=password" -d "user[password_confirmation]=password" http://hyper-recipes.herokuapp.com/users
-```
-
-### with dummy recipes
+### HTTP
 `POST`: `/users`
 
 Sample:
@@ -50,17 +32,6 @@ curl -d "user[email]=user@example.com" -d "user[password]=password" -d "user[pas
 ```
 
 When you successfully create a user you'll get a token in the json response, use that in any further communications with the API, you need to set a request header with `Authorization` and use the generate auth_token.
-
-## Delete user
-_Only account owner can delete his/her account_
-
-`DELETE`: `/users/:id`
-
-In Curl it would be something like that:
-```
-curl -H 'Authorization: Token token="e71d76657591f101f4df"' -X DELETE http://hyper-recipes.herokuapp.com/users/5
-```
-so you should replace `"e71d76657591f101f4df"` with your token, and the `5` at the end of the url with your id
 
 ## Retrieve recipes
 
