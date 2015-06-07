@@ -1,41 +1,52 @@
 source 'https://rubygems.org'
-
 ruby '2.0.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Full-stack web application framework.
 gem 'rails', '4.0.0'
 
+# Rails for API only Applications
 gem 'rails-api'
 
-# Use sqlite3 as the database for Active Record
+# Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
 gem 'mini_magick'
+
+# Ruby file upload library
 gem 'carrierwave'
+
+# Brings clouds to you
 gem 'fog', '~> 1.3.1'
 
 group :production, :staging do
+
+  # PostgreSQL RDBMS
   gem "pg"
+
 end
 
 group :development, :test do
+
+  # This module allows Ruby programs to interface with the SQLite3 database engine
   gem 'sqlite3'
+
+  # Use Pry as your rails console
   gem 'pry-rails'
+
+  # Guard gem for RSpec
   gem 'guard-rspec', require: false
+
+  # Rails integration for RSpec
   gem 'rspec-rails', '~> 3.0'
+
+  # Capybara aims to simplify the process of integration testing Rack applications
   gem 'capybara'
+
+  # Code coverage for Ruby 1.9+
   gem 'simplecov', require: false
+
 end
 
-# To use ActiveModel has_secure_password
+# OpenBSD's bcrypt() password hashing algorithm.
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
+# Create JSON structures via a Builder-style DSL
 gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
