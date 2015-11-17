@@ -1,6 +1,6 @@
 # Introduction
 
-This is the backend for the Hyper Recipes app, to be able to use it, you will need an access token that your contact inside Hyper will provide you with when you begin your quest. This is helpful so other applicants don't modify your recipes in any way.
+This is the backend for the Hyper Recipes app. To be able to use it, you will need an access token that your contact inside Hyper will provide you with when you begin your quest. This is helpful so other applicants don't modify your recipes in any way.
 
 The base HTTP endpoints is: `http://hyper-recipes.herokuapp.com`
 
